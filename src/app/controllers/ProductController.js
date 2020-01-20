@@ -1,6 +1,12 @@
 import Product from '../models/Product'
 
 class ProductController {
+  async index (req, res) {
+    const products = await Product.findAll()
+
+    return res.json(products)
+  }
+
   async store (req, res) {
     const { name, description, category, price } = req.body
 
