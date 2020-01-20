@@ -1,9 +1,9 @@
 import { Router } from 'express'
 
+import ProductController from './app/controllers/ProductController'
+
 const router = Router()
 
-router.get('/', (req, res) => {
-  res.json({ message: 'Express rodando na porta 3000' })
-})
+router.post('/products', ProductController.store)
 
 export default router
