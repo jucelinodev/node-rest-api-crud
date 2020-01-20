@@ -7,6 +7,18 @@ class ProductController {
     return res.json(products)
   }
 
+  async show (req, res) {
+    const { id } = req.params
+
+    const product = await Product.findOne({ where: { id } })
+
+    if (!product) {
+      return res.status(400).json({ message: 'Product does not exist!' })
+    }
+
+    return res.json(product)
+  }
+
   async store (req, res) {
     const { name, description, category, price } = req.body
 

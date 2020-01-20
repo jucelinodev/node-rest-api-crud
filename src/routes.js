@@ -8,4 +8,7 @@ router.route('/products')
   .get(ProductController.index)
   .post(ProductController.store)
 
+router.route('/products/:id')
+  .get(ProductController.show)
+
 export default router
