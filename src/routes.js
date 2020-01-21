@@ -2,17 +2,17 @@ import { Router } from 'express'
 
 import ProductController from './app/controllers/ProductController'
 
-import productValidator from './app/validator/productValidator'
+import ProductValidator from './app/validator/ProductValidator'
 
 const router = Router()
 
 router.route('/products')
   .get(ProductController.index)
-  .post(productValidator, ProductController.store)
+  .post(ProductValidator, ProductController.store)
 
 router.route('/products/:id')
   .get(ProductController.show)
-  .put(productValidator, ProductController.update)
+  .put(ProductValidator, ProductController.update)
   .delete(ProductController.destroy)
 
 export default router
