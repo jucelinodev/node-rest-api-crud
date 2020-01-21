@@ -29,6 +29,21 @@ class ProductController {
     return res.status(201).json(product)
   }
 
+  async update (req, res) {
+    const { id } = req.params
+
+    const product = await Product.findOne({ where: { id } })
+
+    if (!product) {
+      return res.status(400).json({ message: 'Product does not exist!' })
+    }
+
+    const [, newProduct] = await Product
+      .update(req.body, { where: { id }, returning: true, plain: true })
+
+    return res.json(newProduct)
+  }
+
   async destroy (req, res) {
     const { id } = req.params
     const product = await Product.destroy({ where: { id } })

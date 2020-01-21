@@ -10,6 +10,7 @@ router.route('/products')
 
 router.route('/products/:id')
   .get(ProductController.show)
+  .put(ProductController.update)
   .delete(ProductController.destroy)
 
 export default router
